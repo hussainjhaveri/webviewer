@@ -47,6 +47,8 @@ var scopes = 'data:read data:write data:create bucket:create bucket:read';
 const querystring = require('querystring');
 
 // // Route /api/forge/oauth
+app.use(express.static('css'));
+
 app.get('/api/forge/oauth', function (req, res) {
     Axios({
         method: 'POST',
@@ -181,7 +183,7 @@ app.post('/api/forge/datamanagement/bucket/upload', upload.single('fileToUpload'
             headers: {
                 Authorization: 'Bearer ' + access_token,
                 'Content-Disposition': req.file.originalname,
-                'Content-Length': filecontent.length
+                'Content-Length': 2950000000
             },
             data: filecontent
         })
@@ -228,7 +230,7 @@ app.get('/api/forge/modelderivative/:urn', function (req, res) {
         .then(function (response) {
             // Success
             console.log(response);
-            res.redirect('/viewer.html?urn=' + urn);
+            res.redirect('/.html?urn=' + urn);
         })
         .catch(function (error) {
             // Failed

@@ -230,7 +230,7 @@ app.get('/api/forge/modelderivative/:urn', function (req, res) {
         .then(function (response) {
             // Success
             console.log(response);
-            res.redirect('/.html?urn=' + urn);
+            res.redirect('/index.html?urn=' + urn);
         })
         .catch(function (error) {
             // Failed
